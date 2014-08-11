@@ -25,3 +25,7 @@ sb2 -t $VENDOR-$DEVICE-armv7hl -m sdk-install -R zypper ar \
 -G http://repo.merproject.org/releases/mer-tools/rolling/builds/armv7hl/packages/ \
 mer-tools-rolling
 sb2 -t $VENDOR-$DEVICE-armv7hl -m sdk-install -R zypper ref --force
+
+echo "Set the SB2 target to use an up-to-date repo"
+sb2 -t $VENDOR-$DEVICE-armv7hl -m sdk-install -R ssu domain sales
+sb2 -t $VENDOR-$DEVICE-armv7hl -m sdk-install -R ssu dr sdk
