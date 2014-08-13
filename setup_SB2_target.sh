@@ -6,7 +6,7 @@ if [ ! -d "/parentroot" ]; then
   exit 1
 fi
 if [ -d "/parentroot/parentroot" ]; then
-  echo "Error: Don\'t run this script in the HABuildSDK chroot environment"
+  echo "Error: Don't run this script in the HABuildSDK chroot environment"
   exit 1
 fi
 
@@ -14,7 +14,6 @@ SFFE_SB2_TARGET=$MER_ROOT/targets/$VENDOR-$DEVICE-armv7hl
 TARBALL_URL=http://releases.sailfishos.org/sdk/latest/targets/targets.json
 
 echo "Set up SB2 target in Mer SDK"
-hadk
 cd $TEMP
 TARBALL=$(curl $TARBALL_URL | grep 'armv7hl.tar.bz2' | cut -d\" -f4)
 curl -O $TARBALL
@@ -28,7 +27,7 @@ sb2-init -d -L "--sysroot=/" -C "--sysroot=/" \
 -c /usr/bin/qemu-arm-dynamic -m sdk-build \
 -n -N -t / $VENDOR-$DEVICE-armv7hl \
 /opt/cross/bin/armv7hl-meego-linux-gnueabi-gcc
-cd -
+cd - > /dev/null
 
 sb2 -t $VENDOR-$DEVICE-armv7hl -m sdk-install -R rpm --rebuilddb
 sb2 -t $VENDOR-$DEVICE-armv7hl -m sdk-install -R zypper ar \

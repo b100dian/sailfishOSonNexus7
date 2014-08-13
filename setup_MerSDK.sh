@@ -2,7 +2,7 @@
 
 # This script is supposed to be run in a native terminal on your Linux host computer
 if [ -d "/parentroot" ]; then
-  echo "Error: Don\'t run this script in a chroot environment"
+  echo "Error: Don't run this script in a chroot environment"
   exit 1
 fi
 

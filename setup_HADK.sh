@@ -6,7 +6,6 @@ if [ -d "/parentroot" ]; then
     sudo zypper in android-tools createrepo zip
 
     echo "Downloading and extracting the ubuntu-trusty-android-rootfs"
-    hadk
     mkdir -p $TEMP
     cd $TEMP
     TARBALL=ubuntu-trusty-android-rootfs.tar.bz2

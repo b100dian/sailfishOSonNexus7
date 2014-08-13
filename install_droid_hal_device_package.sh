@@ -6,7 +6,7 @@ if [ ! -d "/parentroot" ]; then
   exit 1
 fi
 if [ -d "/parentroot/parentroot" ]; then
-  echo "Error: Don\'t run this script in the HABuildSDK chroot environment"
+  echo "Error: Don't run this script in the HABuildSDK chroot environment"
   exit 1
 fi
 
