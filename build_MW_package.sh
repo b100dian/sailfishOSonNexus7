@@ -5,7 +5,7 @@ if [ ! -d "/parentroot" ]; then
   echo "Error: Run this script in the Mer SDK chroot environment"
   exit 1
 fi
-if [ -d "/parentroot/parentroot"]; then
+if [ -d "/parentroot/parentroot" ]; then
   echo "Error: Don\'t run this script in the HABuildSDK chroot environment"
   exit 1
 fi

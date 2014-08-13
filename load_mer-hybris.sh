@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # This script is supposed to be run in the HABuildSDK environment
-if [ -d "/parentroot/parentroot"]; then
+if [ -d "/parentroot/parentroot" ]; then
   hadk
   sudo mkdir -p $ANDROID_ROOT
   sudo chown -R $USER $ANDROID_ROOT
