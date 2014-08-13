@@ -64,7 +64,7 @@ EOF
 
 cat <<'EOF' >> $HOME/.mersdk.profile
 function hadk() { source $HOME/.mersdk.env${1:+.$1}; echo "Env setup for $DEVICE"; }
-function hadk-chroot() { ubu-chroot -r /parentroot$MER_ROOT/sdks/ubuntu ; }
+function hadk-chroot() { ubu-chroot -r $MER_ROOT/sdks/ubuntu ; }
 hadk
 EOF
 
