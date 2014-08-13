@@ -13,9 +13,9 @@ fi
 PKG=$1
 
 echo "Building package for $PKG"
-sudo mkdir -p /parentroot$MER_ROOT/devel/mer-hybris
-sudo chown -R $USER /parentroot$MER_ROOT/devel/mer-hybris
-cd /parentroot$MER_ROOT/devel/mer-hybris
+hadk
+sudo mkdir -p $MER_ROOT/devel/mer-hybris
+sudo chown -R $USER $MER_ROOT/devel/mer-hybris
 
 cd $MER_ROOT/devel/mer-hybris
 git clone https://github.com/mer-hybris/$PKG.git
@@ -24,9 +24,8 @@ cd $PKG
 
 mb2 -t $VENDOR-$DEVICE-armv7hl -s ../rpm/$PKG.spec build
 
-LOCAL_ANDROID_ROOT=/parentroot$ANDROID_ROOT
-mkdir -p $LOCAL_ANDROID_ROOT/droid-local-repo/$DEVICE/$PKG/
-rm -f $LOCAL_ANDROID_ROOT/droid-local-repo/$DEVICE/$PKG/*.rpm
-mv RPMS/*.rpm $LOCAL_ANDROID_ROOT/droid-local-repo/$DEVICE/$PKG
-createrepo $LOCAL_ANDROID_ROOT/droid-local-repo/$DEVICE
+mkdir -p $ANDROID_ROOT/droid-local-repo/$DEVICE/$PKG/
+rm -f $ANDROID_ROOT/droid-local-repo/$DEVICE/$PKG/*.rpm
+mv RPMS/*.rpm $ANDROID_ROOT/droid-local-repo/$DEVICE/$PKG
+createrepo $ANDROID_ROOT/droid-local-repo/$DEVICE
 sb2 -t $VENDOR-$DEVICE-armv7hl -R -msdk-install zypper ref
