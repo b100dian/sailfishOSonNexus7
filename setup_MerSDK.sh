@@ -28,7 +28,7 @@ cd -
 
 echo "Finishing Mer SDK setup"
 echo "export MER_ROOT=$MER_ROOT" >> $HOME/.bashrc
-echo 'alias mersdk=$MER_ROOT/sdks/sdk/mer-sdk-chroot' >> $HOME/.bashrc
+echo "alias mersdk=$MER_ROOT/sdks/sdk/mer-sdk-chroot" >> $HOME/.bashrc
 exec bash
 
 cat <<'EOF' >> $HOME/.mersdk.profile
