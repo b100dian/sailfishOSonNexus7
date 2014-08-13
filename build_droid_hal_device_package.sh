@@ -2,12 +2,12 @@
 
 # This script is supposed to be run in the Mer SDK environment
 if [ ! -d "/parentroot" ]; then
-echo "Error: Run this script in the Mer SDK chroot environment"
-exit 1
+  echo "Error: Run this script in the Mer SDK chroot environment"
+  exit 1
 fi
 if [ -d "/parentroot/parentroot"]; then
-echo "Error: Don\'t run this script in the HABuildSDK chroot environment"
-exit 1
+  echo "Error: Don\'t run this script in the HABuildSDK chroot environment"
+  exit 1
 fi
 
 echo " Building the droid-hal-device package"
