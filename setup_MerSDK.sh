@@ -10,7 +10,7 @@ MER_ROOT=/srv/mer
 TEMP=$HOME/temp
 VENDOR=asus
 DEVICE=grouper
-ANDROID_ROOT=/srv/mer/android/droid
+ANDROID_ROOT=$MER_ROOT/android/droid
 
 echo 
 echo "Mer root directory will be "$MER_ROOT
@@ -44,7 +44,7 @@ EOF
 echo "Setting up HADK environment"
 cat <<EOF > $HOME/.hadk.env
 export MER_ROOT=$MER_ROOT
-export ANDROID_ROOT=\$MER_ROOT/android/droid
+export ANDROID_ROOT=$ANDROID_ROOT
 export VENDOR=$VENDOR
 export DEVICE=$DEVICE
 EOF
