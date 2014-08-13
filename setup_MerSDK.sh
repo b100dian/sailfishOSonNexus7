@@ -51,7 +51,7 @@ EOF
 
 cat <<'EOF' >> $HOME/.mersdkubu.profile
 function hadk() { source $HOME/.hadk.env${1:+.$1}; echo "Env setup for $DEVICE"; }
-export PS1="HABUILD_SDK [\${DEVICE}] $PS1"
+export PS1="HABuildSDK [\${DEVICE}] $PS1"
 hadk
 EOF
 
