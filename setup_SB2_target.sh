@@ -10,8 +10,7 @@ if [ -d "/parentroot/parentroot"]; then
   exit 1
 fi
 
-TEMP=$HOME/temp
-SFFE_SB2_TARGET=/parentroot$MER_ROOT/targets/$VENDOR-$DEVICE-armv7hl
+SFFE_SB2_TARGET=$MER_ROOT/targets/$VENDOR-$DEVICE-armv7hl
 TARBALL_URL=http://releases.sailfishos.org/sdk/latest/targets/targets.json
 
 echo "Set up SB2 target in Mer SDK"
@@ -29,6 +28,7 @@ sb2-init -d -L "--sysroot=/" -C "--sysroot=/" \
 -c /usr/bin/qemu-arm-dynamic -m sdk-build \
 -n -N -t / $VENDOR-$DEVICE-armv7hl \
 /opt/cross/bin/armv7hl-meego-linux-gnueabi-gcc
+cd -
 
 sb2 -t $VENDOR-$DEVICE-armv7hl -m sdk-install -R rpm --rebuilddb
 sb2 -t $VENDOR-$DEVICE-armv7hl -m sdk-install -R zypper ar \
