@@ -2,7 +2,6 @@
 
 # This script is supposed to be run in the HABuildSDK environment
 if [ -d "/parentroot/parentroot" ]; then
-  hadk
   sudo mkdir -p $ANDROID_ROOT
   sudo chown -R $USER $ANDROID_ROOT
   cd $ANDROID_ROOT
@@ -16,3 +15,4 @@ else
   echo "Error: Run this script in the HABuildSDK chroot environment"
   exit 1
 fi
+
