@@ -45,6 +45,7 @@ export MER_ROOT=/parentroot$MER_ROOT
 export ANDROID_ROOT=/parentroot$ANDROID_ROOT
 export VENDOR=$VENDOR
 export DEVICE=$DEVICE
+export TEMP=$TEMP
 EOF
 
 echo "Setting up HADK environment"
