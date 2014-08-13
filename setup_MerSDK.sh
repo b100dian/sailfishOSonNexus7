@@ -1,4 +1,11 @@
 #!/bin/bash
+
+# This script is supposed to be run in a native terminal on your Linux host computer
+if [ -d "/parentroot" ]; then
+  echo "Error: Don\'t run this script in a chroot environment"
+  exit 1
+fi
+
 MER_ROOT=/srv/mer
 TEMP=$HOME/temp
 VENDOR=asus
