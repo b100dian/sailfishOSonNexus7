@@ -11,8 +11,7 @@ if [ -d "/parentroot/parentroot"]; then
 fi
 
 echo " Building the droid-hal-device package"
-LOCAL_ANDROID_ROOT=/parentroot$ANDROID_ROOT
-cd $LOCAL_ANDROID_ROOT
+cd $ANDROID_ROOT
 # THE COMMAND BELOW WILL FAIL. It's normal, carry on with the next one.
 # Explanation: force installing of build-requirements by specifying the
 # .inc file directly, but build-dependencies will be pulled in via
@@ -21,14 +20,14 @@ mb2 -t $VENDOR-$DEVICE-armv7hl -s rpm/droid-hal-device.inc build
 mb2 -t $VENDOR-$DEVICE-armv7hl -s rpm/droid-hal-$DEVICE.spec build
 
 echo "Create a local rpm repository"
-mkdir -p $LOCAL_ANDROID_ROOT/droid-local-repo/$DEVICE
-rm -f $LOCAL_ANDROID_ROOT/droid-local-repo/$DEVICE/droid-hal-*rpm
-mv RPMS/*${DEVICE}* $LOCAL_ANDROID_ROOT/droid-local-repo/$DEVICE
-createrepo $LOCAL_ANDROID_ROOT/droid-local-repo/$DEVICE
+mkdir -p $ANDROID_ROOT/droid-local-repo/$DEVICE
+rm -f $ANDROID_ROOT/droid-local-repo/$DEVICE/droid-hal-*rpm
+mv RPMS/*${DEVICE}* $ANDROID_ROOT/droid-local-repo/$DEVICE
+createrepo $ANDROID_ROOT/droid-local-repo/$DEVICE
 
 echo "Add local RPM repo to Target"
 sb2 -t $VENDOR-$DEVICE-armv7hl -R -m sdk-install \
-ssu ar local-$DEVICE-hal file://$LOCAL_ANDROID_ROOT/droid-local-repo/$DEVICE
+ssu ar local-$DEVICE-hal file://$ANDROID_ROOT/droid-local-repo/$DEVICE
 
 echo "Package droid-hal-config into rpm package"
 mb2 -t $VENDOR-$DEVICE-armv7hl \
