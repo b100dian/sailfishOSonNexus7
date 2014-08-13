@@ -41,10 +41,17 @@ if [ -d /etc/bash_completion.d ]; then
 fi
 EOF
 
+cat <<EOF > $HOME/.mersdk.env
+export MER_ROOT=/parentroot$MER_ROOT
+export ANDROID_ROOT=/parentroot$ANDROID_ROOT
+export VENDOR=$VENDOR
+export DEVICE=$DEVICE
+EOF
+
 echo "Setting up HADK environment"
 cat <<EOF > $HOME/.hadk.env
-export MER_ROOT=$MER_ROOT
-export ANDROID_ROOT=$ANDROID_ROOT
+export MER_ROOT=/parentroot/parentroot$MER_ROOT
+export ANDROID_ROOT=/parentroot/parentroot$ANDROID_ROOT
 export VENDOR=$VENDOR
 export DEVICE=$DEVICE
 EOF
@@ -56,7 +63,7 @@ hadk
 EOF
 
 cat <<'EOF' >> $HOME/.mersdk.profile
-function hadk() { source $HOME/.hadk.env${1:+.$1}; echo "Env setup for $DEVICE"; }
+function hadk() { source $HOME/.mersdk.env${1:+.$1}; echo "Env setup for $DEVICE"; }
 function hadk-chroot() { ubu-chroot -r /parentroot$MER_ROOT/sdks/ubuntu ; }
 hadk
 EOF
