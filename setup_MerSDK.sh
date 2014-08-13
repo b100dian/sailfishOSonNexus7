@@ -18,18 +18,17 @@ echo "Downloading chroot env from merproject.org"
 mkdir -p $TEMP
 cd $TEMP
 curl -k -O https://img.merproject.org/images/mer-sdk/mer-i486-latest-sdk-rolling-chroot-armv7hl-sb2.tar.bz2 > /dev/null
-cd -
+cd - > /dev/null
 
 echo "Extracting Mer SDK to "$MER_ROOT"/sdks/sdk"
 sudo mkdir -p $MER_ROOT/sdks/sdk
 cd $MER_ROOT/sdks/sdk
 sudo tar --numeric-owner -p -xjf $TEMP/mer-i486-latest-sdk-rolling-chroot-armv7hl-sb2.tar.bz2 > /dev/null
-cd -
+cd - > /dev/null
 
 echo "Finishing Mer SDK setup"
 echo "export MER_ROOT=$MER_ROOT" >> $HOME/.bashrc
 echo "alias mersdk=$MER_ROOT/sdks/sdk/mer-sdk-chroot" >> $HOME/.bashrc
-exec bash
 
 cat <<'EOF' >> $HOME/.mersdk.profile
 export PS1="MerSDK $PS1"
@@ -67,3 +66,6 @@ function hadk() { source $HOME/.mersdk.env${1:+.$1}; echo "Env setup for $DEVICE
 function hadk-chroot() { ubu-chroot -r /parentroot$MER_ROOT/sdks/ubuntu ; }
 hadk
 EOF
+
+exec bash
+
