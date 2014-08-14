@@ -11,6 +11,7 @@ exit 1
 fi
 
 echo "Generate and configure a kickstart file"
+cd $ANDROID_ROOT
 mkdir -p tmp
 HA_REPO="repo --name=adaptation0-$DEVICE-@RELEASE@"
 sed -e \
@@ -25,11 +26,10 @@ HA_REPO1="repo --name=adaptation1-$DEVICE-@RELEASE@ \
 sed -i -e "/^$HA_REPO.*$/a$HA_REPO1" tmp/Jolla-@RELEASE@-$DEVICE-@ARCH@.ks
 
 echo "Process all patterns"
-hadk
 rpm/helpers/process_patterns.sh
 
 echo "Building an flash image with MIC"
-# always aim for the latest:
+# always aim for the latest Sailfish OS version:
 RELEASE=1.0.8.19
 # WARNING: EXTRA_NAME currently does not support '.' dots in it!
 EXTRA_NAME=-myfirst
