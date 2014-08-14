@@ -10,15 +10,15 @@ if [ -d "/parentroot/parentroot" ]; then
   exit 1
 fi
 
-PKG=$1
+PKG=libhybris
 
 echo "Building package for $PKG"
-hadk
 sudo mkdir -p $MER_ROOT/devel/mer-hybris
 sudo chown -R $USER $MER_ROOT/devel/mer-hybris
 
 cd $MER_ROOT/devel/mer-hybris
 git clone https://github.com/mer-hybris/$PKG.git
+cd $PKG
 git submodule update
 cd $PKG
 
@@ -29,3 +29,6 @@ rm -f $ANDROID_ROOT/droid-local-repo/$DEVICE/$PKG/*.rpm
 mv RPMS/*.rpm $ANDROID_ROOT/droid-local-repo/$DEVICE/$PKG
 createrepo $ANDROID_ROOT/droid-local-repo/$DEVICE
 sb2 -t $VENDOR-$DEVICE-armv7hl -R -msdk-install zypper ref
+
+sb2 -t $VENDOR-$DEVICE-armv7hl -R -msdk-build zypper rm mesa-llvmpipe
+
