@@ -19,6 +19,6 @@ EXTRA_NAME=-myfirst
 sudo mic create fs --arch armv7hl \
 --tokenmap=ARCH:armv7hl,RELEASE:$RELEASE,EXTRA_NAME:$EXTRA_NAME \
 --record-pkgs=name,url \
---outdir=sfa-mako-ea-$RELEASE$EXTRA_NAME \
---pack-to=sfa-mako-ea-$RELEASE$EXTRA_NAME.tar.bz2 \
+--outdir=sfa-$DEVICE-ea-$RELEASE$EXTRA_NAME \
+--pack-to=sfa-$DEVICE-ea-$RELEASE$EXTRA_NAME.tar.bz2 \
 $ANDROID_ROOT/tmp/Jolla-@RELEASE@-$DEVICE-@ARCH@.ks
