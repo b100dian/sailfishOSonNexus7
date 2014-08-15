@@ -1,14 +1,9 @@
 #!/bin/bash
 
+. common_functions
+
 # This script is supposed to be run in the Mer SDK environment
-if [ ! -d "/parentroot" ]; then
-  echo "Error: Run this script in the Mer SDK chroot environment"
-  exit 1
-fi
-if [ -d "/parentroot/parentroot" ]; then
-  echo "Error: Don't run this script in the HABuildSDK chroot environment"
-  exit 1
-fi
+checkMerSDK
 
 echo " Building the droid-hal-device package"
 cd $ANDROID_ROOT
@@ -33,3 +28,4 @@ echo "Package droid-hal-config into rpm package"
 mb2 -t $VENDOR-$DEVICE-armv7hl \
 -s hybris/droid-hal-configs/rpm/droid-hal-configs.spec \
 build
+

@@ -1,14 +1,10 @@
 #!/bin/bash
+# Usage e.g.: build_sfos_flash_image.sh 1.0.8.19
+
+. common_functions
 
 # This script is supposed to be run in the Mer SDK environment
-if [ ! -d "/parentroot" ]; then
-  echo "Error: Run this script in the Mer SDK chroot environment"
-  exit 1
-fi
-if [ -d "/parentroot/parentroot" ]; then
-  echo "Error: Don't run this script in the HABuildSDK chroot environment"
-  exit 1
-fi
+checkMerSDK
 
 echo "Building an flash image with MIC"
 # always aim for the latest Sailfish OS version which comes from the command line
