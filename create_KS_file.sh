@@ -27,15 +27,3 @@ sed -i -e "/^$HA_REPO.*$/a$HA_REPO1" tmp/Jolla-@RELEASE@-$DEVICE-@ARCH@.ks
 
 echo "Process all patterns"
 rpm/helpers/process_patterns.sh
-
-echo "Building an flash image with MIC"
-# always aim for the latest Sailfish OS version:
-RELEASE=1.0.8.19
-# WARNING: EXTRA_NAME currently does not support '.' dots in it!
-EXTRA_NAME=-myfirst
-sudo mic create fs --arch armv7hl \
---tokenmap=ARCH:armv7hl,RELEASE:$RELEASE,EXTRA_NAME:$EXTRA_NAME \
---record-pkgs=name,url \
---outdir=sfa-mako-ea-$RELEASE$EXTRA_NAME \
---pack-to=sfa-mako-ea-$RELEASE$EXTRA_NAME.tar.bz2 \
-$ANDROID_ROOT/tmp/Jolla-@RELEASE@-$DEVICE-@ARCH@.ks
