@@ -27,8 +27,8 @@ mb2 -t $VENDOR-$DEVICE-armv7hl -s ../rpm/$PKG.spec build
 mkdir -p $ANDROID_ROOT/droid-local-repo/$DEVICE/$PKG/
 rm -f $ANDROID_ROOT/droid-local-repo/$DEVICE/$PKG/*.rpm
 mv RPMS/*.rpm $ANDROID_ROOT/droid-local-repo/$DEVICE/$PKG
+
 createrepo $ANDROID_ROOT/droid-local-repo/$DEVICE
-sb2 -t $VENDOR-$DEVICE-armv7hl -R -msdk-install zypper ref
+sb2 -t $VENDOR-$DEVICE-armv7hl -m sdk-install -R zypper ref
 
-sb2 -t $VENDOR-$DEVICE-armv7hl -R -msdk-build zypper rm mesa-llvmpipe
-
+sb2 -t $VENDOR-$DEVICE-armv7hl -m sdk-build -R zypper rm mesa-llvmpipe
