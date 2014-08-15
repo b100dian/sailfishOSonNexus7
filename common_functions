@@ -1,0 +1,33 @@
+# Print to the console. Usage: consoleLog 'Hello World'
+consoleLog()
+{
+  echo '['$(date +'%a %Y-%m-%d %H:%M:%S %z')']' $1
+}
+
+# Check if running in the Mer SDK environment
+checkMerSDK()
+{
+  if [ ! -d "/parentroot" ] || [ -d "/parentroot/parentroot" ]; then
+    echo "Error: Run this script in the Mer SDK chroot environment"
+    exit 1
+  fi
+}
+
+# Check if running in the native terminal of a linux host
+checkNativeTerminal()
+{
+  if [ -d "/parentroot" ]; then
+    echo "Error: Run this script outside of the Mer SDK in a native terminal"
+    exit 1
+  fi
+}
+
+# Check if running in the HABuild SDK environment
+checkHABuildSDK()
+{
+  if [ ! -d "/parentroot/parentroot" ]; then
+    echo "Error: Run this script in the HABuildSDK chroot environment"
+    exit 1
+  fi
+}
+
