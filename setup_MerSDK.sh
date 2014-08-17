@@ -5,7 +5,7 @@
 # This script is supposed to be run in a native terminal on your Linux host computer
 checkNativeTerminal
 
-MER_ROOT=/srv/mer
+MER_ROOT=$HOME/mer
 TEMP=$HOME/temp
 VENDOR=asus
 DEVICE=grouper
@@ -20,7 +20,7 @@ curl -k -O https://img.merproject.org/images/mer-sdk/mer-i486-latest-sdk-rolling
 cd - > /dev/null
 
 echo "Extracting Mer SDK to "$MER_ROOT"/sdks/sdk"
-sudo mkdir -p $MER_ROOT/sdks/sdk
+mkdir -p $MER_ROOT/sdks/sdk
 cd $MER_ROOT/sdks/sdk
 sudo tar --numeric-owner -p -xjf $TEMP/mer-i486-latest-sdk-rolling-chroot-armv7hl-sb2.tar.bz2 > /dev/null
 cd - > /dev/null
@@ -40,8 +40,8 @@ fi
 EOF
 
 cat <<EOF > $HOME/.mersdk.env
-export MER_ROOT=/parentroot$MER_ROOT
-export ANDROID_ROOT=/parentroot$ANDROID_ROOT
+export MER_ROOT=$MER_ROOT
+export ANDROID_ROOT=$ANDROID_ROOT
 export VENDOR=$VENDOR
 export DEVICE=$DEVICE
 export TEMP=$TEMP
@@ -49,8 +49,8 @@ EOF
 
 echo "Setting up HADK environment"
 cat <<EOF > $HOME/.hadk.env
-export MER_ROOT=/parentroot/parentroot$MER_ROOT
-export ANDROID_ROOT=/parentroot/parentroot$ANDROID_ROOT
+export MER_ROOT=$MER_ROOT
+export ANDROID_ROOT=$ANDROID_ROOT
 export VENDOR=$VENDOR
 export DEVICE=$DEVICE
 EOF

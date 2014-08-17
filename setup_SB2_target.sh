@@ -12,7 +12,7 @@ echo "Set up SB2 target in Mer SDK"
 cd $TEMP
 TARBALL=$(curl $TARBALL_URL | grep 'armv7hl.tar.bz2' | cut -d\" -f4)
 curl -O $TARBALL
-sudo mkdir -p $SFFE_SB2_TARGET
+mkdir -p $SFFE_SB2_TARGET
 sudo tar --numeric-owner -pxjf $(basename $TARBALL) -C $SFFE_SB2_TARGET
 sudo chown -R $USER $SFFE_SB2_TARGET
 cd $SFFE_SB2_TARGET
