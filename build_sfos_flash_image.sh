@@ -11,7 +11,7 @@ echo "Building an flash image with MIC"
 RELEASE=$1
 
 # WARNING: EXTRA_NAME currently does not support '.' dots in it!
-EXTRA_NAME=-myfirst
+EXTRA_NAME=-$EXTRA_STRING-$(date +%Y%m%d%H%M)
 sudo mic create fs --arch armv7hl \
 --tokenmap=ARCH:armv7hl,RELEASE:$RELEASE,EXTRA_NAME:$EXTRA_NAME \
 --record-pkgs=name,url \
