@@ -14,11 +14,17 @@ sed -e \
 $ANDROID_ROOT/installroot/usr/share/kickstarts/Jolla-@RELEASE@-$DEVICE-@ARCH@.ks \
 > tmp/Jolla-@RELEASE@-$DEVICE-@ARCH@.ks
 
-MOBS_URI="http://repo.merproject.org/obs"
-HA_REPO="repo --name=adaptation0-$DEVICE-@RELEASE@"
-HA_REPO1="repo --name=adaptation1-$DEVICE-@RELEASE@ \
---baseurl=$MOBS_URI/sailfishos:/devel:/hw:/$DEVICE/sailfish_latest_@ARCH@/"
-sed -i -e "/^$HA_REPO.*$/a$HA_REPO1" tmp/Jolla-@RELEASE@-$DEVICE-@ARCH@.ks
+# Don't take packages from Mer OBS repos
+#MOBS_URI="http://repo.merproject.org/obs"
+#HA_REPO="repo --name=adaptation0-$DEVICE-@RELEASE@"
+#HA_REPO1="repo --name=adaptation1-$DEVICE-@RELEASE@ \
+#--baseurl=$MOBS_URI/sailfishos:/devel:/hw:/mako/sailfish_latest_@ARCH@/"
+#sed -i -e "/^$HA_REPO.*$/a$HA_REPO1" tmp/Jolla-@RELEASE@-$DEVICE-@ARCH@.ks
+
+#echo "Add grouper as new device"
+#rpm/helpers/add_new_device.sh
 
 echo "Process all patterns"
 rpm/helpers/process_patterns.sh
+
+
