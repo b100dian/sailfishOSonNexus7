@@ -7,9 +7,7 @@ checkMerSDK
 
 PKG=libhybris
 
-echo "Building package for $PKG"
-sudo mkdir -p $MER_ROOT/devel/mer-hybris
-sudo chown -R $USER $MER_ROOT/devel/mer-hybris
+mkdir -p $MER_ROOT/devel/mer-hybris
 
 cd $MER_ROOT/devel/mer-hybris
 git clone https://github.com/mer-hybris/$PKG.git
