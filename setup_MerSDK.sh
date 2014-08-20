@@ -5,11 +5,13 @@
 # This script is supposed to be run in a native terminal on your Linux host computer
 checkNativeTerminal
 
-MER_ROOT=$HOME/mer
+MER_ROOT=$HOME/mer-root
 TEMP=$HOME/temp
 VENDOR=asus
 DEVICE=grouper
 ANDROID_ROOT=$MER_ROOT/android/droid
+IMAGE_DEST=$MER_ROOT/sfos-image/$DEVICE
+EXTRA_STRING=jobe
 
 echo 
 echo "Mer root directory will be "$MER_ROOT
@@ -30,7 +32,7 @@ echo "export MER_ROOT=$MER_ROOT" >> $HOME/.bashrc
 echo "alias mersdk=$MER_ROOT/sdks/sdk/mer-sdk-chroot" >> $HOME/.bashrc
 
 cat <<'EOF' >> $HOME/.mersdk.profile
-export PS1="MerSDK $PS1"
+export PS1="\[\e[0;32m\]\t MerSDK [\${DEVICE}] \W\[\e[0m\] "
 if [ -d /etc/bash_completion.d ]; then
    for i in /etc/bash_completion.d/*;
    do
@@ -39,20 +41,16 @@ if [ -d /etc/bash_completion.d ]; then
 fi
 EOF
 
-cat <<EOF > $HOME/.mersdk.env
-export MER_ROOT=$MER_ROOT
-export ANDROID_ROOT=$ANDROID_ROOT
-export VENDOR=$VENDOR
-export DEVICE=$DEVICE
-export TEMP=$TEMP
-EOF
-
 echo "Setting up HADK environment"
 cat <<EOF > $HOME/.hadk.env
 export MER_ROOT=$MER_ROOT
 export ANDROID_ROOT=$ANDROID_ROOT
 export VENDOR=$VENDOR
 export DEVICE=$DEVICE
+export TEMP=$TEMP
+
+export IMAGE_DEST=$IMAGE_DEST
+export EXTRA_STRING=$EXTRA_STRING
 EOF
 
 cat <<'EOF' >> $HOME/.mersdkubu.profile
@@ -62,7 +60,7 @@ hadk
 EOF
 
 cat <<'EOF' >> $HOME/.mersdk.profile
-function hadk() { source $HOME/.mersdk.env${1:+.$1}; echo "Env setup for $DEVICE"; }
+function hadk() { source $HOME/.hadk.env${1:+.$1}; echo "Env setup for $DEVICE"; }
 function hadk-chroot() { ubu-chroot -r $MER_ROOT/sdks/ubuntu ; }
 hadk
 EOF
