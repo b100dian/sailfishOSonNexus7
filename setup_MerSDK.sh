@@ -46,12 +46,12 @@ EOF
 
 cat <<'EOF' > $HOME/.mersdkubu.profile
 function hadk() { source $HOME/.hadk.env${1:+.$1}; echo "Env setup for $DEVICE"; }
-export PS1="HABuildSDK [\${DEVICE}] $PS1"
+export PS1="\[\e[0;33m\]HABuildSDK [\${DEVICE}] $PS1\[\e[0m\]"
 hadk
 EOF
 
 cat <<'EOF' > $HOME/.mersdk.profile
-export PS1="\[\e[0;32m\]\t MerSDK [\${DEVICE}] \W\[\e[0m\] "
+export PS1="\[\e[0;32m\]MerSDK [\${DEVICE}] \W$\[\e[0m\] "
 if [ -d /etc/bash_completion.d ]; then
    for i in /etc/bash_completion.d/*;
    do
