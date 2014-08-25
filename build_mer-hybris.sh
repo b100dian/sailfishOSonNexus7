@@ -10,7 +10,7 @@ cd $ANDROID_ROOT
 # Check if kernel config is suitable for mer
 KERNEL_CHECK=$(hybris/mer-kernel-check/mer_verify_kernel_config out/target/product/grouper/obj/KERNEL_OBJ/.config)
 if [ -n "$KERNEL_CHECK" ]; then
-  echo "Kernel config is not suitable for mer please correct below issues in kernel/asus/grouper/arch/arm/configs/cyanogenmod_grouper_defconfig"""
+  echo "Kernel config is not suitable for mer please correct below issues in $ANDROID_ROOT/kernel/asus/grouper/arch/arm/configs/cyanogenmod_grouper_defconfig"""
   echo
   echo $KERNEL_CHECK
   exit 1
