@@ -8,8 +8,15 @@ checkHABuildSDK
 cd $ANDROID_ROOT
 
 # Check if kernel config is suitable for mer
-
+KERNEL_CHECK=$(hybris/mer-kernel-check/mer_verify_kernel_config out/target/product/grouper/obj/KERNEL_OBJ/.config)
+if [ -n "$KERNEL_CHECK" ]; then
+  echo "Kernel config is not suitable for mer please correct below issues in kernel/asus/grouper/arch/arm/configs/cyanogenmod_grouper_defconfig"""
+  echo
+  echo $KERNEL_CHECK
+  exit 1
+fi
 
 # Now build the kernel, initrd, bionic libc and other stuff needed for mer
+echo "Kernel config is ok, build hybris-hal now"
 make -j4 hybris-hal
 
