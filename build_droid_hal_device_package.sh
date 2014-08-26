@@ -21,10 +21,15 @@ mb2 -t $VENDOR-$DEVICE-armv7hl -s rpm/droid-hal-device.inc build
 mb2 -t $VENDOR-$DEVICE-armv7hl -s rpm/droid-hal-$DEVICE.spec build
 
 echo "Create a local rpm repository"
+if [ $(ls RPMS/*${DEVICE}* | wc -l) -eq 0 ]; then
+  echo "Error: No RPMs found for droid-hal-$DEVICE"
+  exit 1
+fi
+
 PKG=droid-hal-$DEVICE
-mkdir -p $ANDROID_ROOT/droid-local-repo/$DEVICE/$PKG/
-rm -f $ANDROID_ROOT/droid-local-repo/$DEVICE/$PKG/*.rpm
-mv RPMS/*${DEVICE}* $ANDROID_ROOT/droid-local-repo/$DEVICE/$PKG
+mkdir -p $ANDROID_ROOT/droid-local-repo/$DEVICE/
+rm -f $ANDROID_ROOT/droid-local-repo/$DEVICE/*.rpm
+mv RPMS/*${DEVICE}* $ANDROID_ROOT/droid-local-repo/$DEVICE
 
 createrepo $ANDROID_ROOT/droid-local-repo/$DEVICE
 
