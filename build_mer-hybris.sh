@@ -18,5 +18,9 @@ fi
 
 # Now build the kernel, initrd, bionic libc and other stuff needed for mer
 echo "Kernel config is ok, build hybris-hal now"
-make -j4 hybris-hal
 
+source build/envsetup.sh
+export USE_CCACHE=1
+breakfast $DEVICE
+rm .repo/local_manifests/roomservice.xml
+make -j4 hybris-hal
