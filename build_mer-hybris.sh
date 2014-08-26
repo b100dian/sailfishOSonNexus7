@@ -5,6 +5,11 @@
 # This script is supposed to be run in the HABuild SDK (Android build chroot)
 checkHABuildSDK
 
+if [ ! -d $ANDROID_ROOT ]; then
+  echo "Error: CyanogenMod sources for mer-hybris not yet cloned locally, please use load_mer-hybris.sh to do so."
+  exit 1
+fi
+
 cd $ANDROID_ROOT
 
 # Check if kernel config is suitable for mer
