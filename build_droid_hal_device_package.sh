@@ -6,6 +6,12 @@
 checkMerSDK
 
 echo " Building the droid-hal-device rpm package"
+
+if [ ! -d $ANDROID_ROOT ]; then
+  echo "Error: CyanogenMod sources for mer-hybris not yet cloned locally, please use load_mer-hybris.sh to do so."
+  exit 1
+fi
+
 cd $ANDROID_ROOT
 # THE COMMAND BELOW WILL FAIL. It's normal, carry on with the next one.
 # Explanation: force installing of build-requirements by specifying the
