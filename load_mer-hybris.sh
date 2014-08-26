@@ -15,8 +15,3 @@ else
 fi
 
 repo sync
-source build/envsetup.sh
-export USE_CCACHE=1
-breakfast $DEVICE
-rm .repo/local_manifests/roomservice.xml
-
