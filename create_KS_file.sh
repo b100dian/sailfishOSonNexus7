@@ -21,6 +21,10 @@ $ANDROID_ROOT/installroot/usr/share/kickstarts/Jolla-@RELEASE@-$DEVICE-@ARCH@.ks
 #--baseurl=$MOBS_URI/sailfishos:/devel:/hw:/mako/sailfish_latest_@ARCH@/"
 #sed -i -e "/^$HA_REPO.*$/a$HA_REPO1" tmp/Jolla-@RELEASE@-$DEVICE-@ARCH@.ks
 
+# TODO: Enable 5 icons in a row in Homescreen
+# /usr/share/lipstick-jolla-home-qt5/qml/launcher/LauncherGrid.qml
+# property int column: 4 -> 5
+
 #echo "Add grouper as new device"
 #rpm/helpers/add_new_device.sh
 
