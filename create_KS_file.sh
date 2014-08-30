@@ -21,9 +21,12 @@ $ANDROID_ROOT/installroot/usr/share/kickstarts/Jolla-@RELEASE@-$DEVICE-@ARCH@.ks
 #--baseurl=$MOBS_URI/sailfishos:/devel:/hw:/mako/sailfish_latest_@ARCH@/"
 #sed -i -e "/^$HA_REPO.*$/a$HA_REPO1" tmp/Jolla-@RELEASE@-$DEVICE-@ARCH@.ks
 
-# TODO: Add openrepos.net for warehouse client
-# zypper ar -f http://sailfish.openrepos.net/basil/personal-main.repo
-# install: harbour-warehouse
+# Add openrepos.net for warehouse client
+HA_REPO="repo --name=adaptation0-$DEVICE-@RELEASE@"
+OPENREPOS="repo --name=openrepos \
+--baseurl=http://sailfish.openrepos.net/basil/personal/main/"
+sed -i -e "/^$HA_REPO.*$/a$OPENREPOS" tmp/Jolla-@RELEASE@-$DEVICE-@ARCH@.ks
+sed -i -e "/^%packages/aharbour-warehouse" tmp/Jolla-@RELEASE@-$DEVICE-@ARCH@.ks
 
 # TODO: Enable 5 icons in a row in Homescreen
 # /usr/share/lipstick-jolla-home-qt5/qml/launcher/LauncherGrid.qml
