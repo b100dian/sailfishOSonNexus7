@@ -17,7 +17,7 @@ cd $ANDROID_ROOT
 # Explanation: force installing of build-requirements by specifying the
 # .inc file directly, but build-dependencies will be pulled in via
 # zypper, so that the next step has all macro definitions loaded
-mb2 -t $VENDOR-$DEVICE-armv7hl -s rpm/droid-hal-device.inc build
+#mb2 -t $VENDOR-$DEVICE-armv7hl -s rpm/droid-hal-device.inc build
 mb2 -t $VENDOR-$DEVICE-armv7hl -s rpm/droid-hal-$DEVICE.spec build
 
 echo "Create a local rpm repository"

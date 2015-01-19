@@ -22,10 +22,10 @@ rm .repo/local_manifests/roomservice.xml
 make -j4 hybris-hal
 
 # Check if kernel config is suitable for mer
-KERNEL_CHECK=$(hybris/mer-kernel-check/mer_verify_kernel_config out/target/product/grouper/obj/KERNEL_OBJ/.config 2>/dev/null)
+KERNEL_CHECK=$(hybris/mer-kernel-check/mer_verify_kernel_config out/target/product/tilapia/obj/KERNEL_OBJ/.config 2>/dev/null)
 if [ -n "$KERNEL_CHECK" ]; then
   echo
-  echo "Kernel config is not suitable for Sailfish OS. Please correct below issues in $ANDROID_ROOT/kernel/asus/grouper/arch/arm/configs/cyanogenmod_grouper_defconfig"
+  echo "Kernel config is not suitable for Sailfish OS. Please correct below issues in $ANDROID_ROOT/kernel/asus/tilapia/arch/arm/configs/cyanogenmod_tilapia_defconfig"
   echo
   echo -e "$KERNEL_CHECK"
   exit 1

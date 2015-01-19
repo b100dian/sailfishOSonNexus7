@@ -32,8 +32,8 @@ sed -i -e "/^%packages/aharbour-warehouse" tmp/Jolla-@RELEASE@-$DEVICE-@ARCH@.ks
 # /usr/share/lipstick-jolla-home-qt5/qml/launcher/LauncherGrid.qml
 # property int column: 4 -> 5
 
-#echo "Add grouper as new device"
-#rpm/helpers/add_new_device.sh
+echo "Add tilapia as new device"
+rpm/helpers/add_new_device.sh
 
 echo "Process all patterns"
 rpm/helpers/process_patterns.sh

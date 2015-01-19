@@ -8,7 +8,7 @@ checkNativeTerminal
 MER_ROOT=$HOME/mer-root
 TEMP=$HOME/temp
 VENDOR=asus
-DEVICE=grouper
+DEVICE=tilapia
 ANDROID_ROOT=$MER_ROOT/android/droid
 IMAGE_DEST=$MER_ROOT/sfos-image/$DEVICE
 EXTRA_STRING=jobe
